@@ -8,14 +8,42 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Camera2D",
+"class": "move_camera",
+"language": "GDScript",
+"path": "res://scripts/MoveCamera.gd"
+} ]
+_global_script_class_icons={
+"move_camera": ""
+}
+
 [application]
 
-config/name="Harvest"
+config/name="Monster Harvest"
+config/description="You grow exotic monstrous plants."
+run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=960
+window/size/test_height=540
+window/stretch/mode="2d"
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+show_dialogue={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
