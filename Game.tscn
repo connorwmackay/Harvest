@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://FarmTilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MoveCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SelectedTile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DateTime.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node2D"]
 
@@ -12,10 +13,16 @@ offset = Vector2( 100, 30 )
 current = true
 move_speed = 8
 
-[node name="SelectedTile" parent="." instance=ExtResource( 3 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="MoveCamera"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enable = true
+[node name="DateTime" parent="MoveCamera/CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 114.0
+margin_bottom = 48.0
+alignment = 2
+
+[node name="SelectedTile" parent="." instance=ExtResource( 3 )]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 z_index = -1
