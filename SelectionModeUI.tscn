@@ -4,8 +4,8 @@
 [ext_resource path="res://SelectionModeUI.gd" type="Script" id=2]
 
 [node name="SelectionModeUI" type="Panel"]
-margin_right = 72.0
-margin_bottom = 144.0
+margin_right = 128.0
+margin_bottom = 152.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -13,13 +13,16 @@ theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 0.432
 margin_left = 8.0
 margin_right = 66.0
 margin_bottom = 141.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
 [node name="TillButton" type="Button" parent="VBoxContainer"]
-margin_right = 58.0
+margin_right = 113.0
 margin_bottom = 25.0
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -29,7 +32,7 @@ text = "Till"
 
 [node name="WaterButton" type="Button" parent="VBoxContainer"]
 margin_top = 29.0
-margin_right = 58.0
+margin_right = 113.0
 margin_bottom = 54.0
 mouse_filter = 1
 toggle_mode = true
@@ -37,7 +40,7 @@ text = "Water"
 
 [node name="FarmButton" type="Button" parent="VBoxContainer"]
 margin_top = 58.0
-margin_right = 58.0
+margin_right = 113.0
 margin_bottom = 83.0
 mouse_filter = 1
 toggle_mode = true
@@ -45,7 +48,7 @@ text = "Plant"
 
 [node name="SellButton" type="Button" parent="VBoxContainer"]
 margin_top = 87.0
-margin_right = 58.0
+margin_right = 113.0
 margin_bottom = 112.0
 mouse_filter = 1
 toggle_mode = true
@@ -53,11 +56,25 @@ text = "Sell"
 
 [node name="TurretButton" type="Button" parent="VBoxContainer"]
 margin_top = 116.0
-margin_right = 58.0
+margin_right = 113.0
 margin_bottom = 141.0
 mouse_filter = 1
 toggle_mode = true
 text = "Turret"
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 160.0
+margin_right = 128.0
+margin_bottom = 200.0
+mouse_filter = 1
+
+[node name="AdvanceButton" type="Button" parent="Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 120.0
+margin_bottom = 33.0
+mouse_filter = 1
+text = "Advance Day"
 
 [connection signal="mouse_entered" from="." to="." method="_on_SelectionModeUI_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_SelectionModeUI_mouse_exited"]
