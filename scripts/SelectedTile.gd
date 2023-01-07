@@ -4,7 +4,8 @@ enum SelectionMode {
 	Till,
 	Water,
 	Plant,
-	Sell
+	Sell,
+	Turret
 }
 
 onready var tilemap = get_tree().get_current_scene().get_node("TileMap")
@@ -40,6 +41,8 @@ func _process(delta):
 		selected_mode = SelectionMode.Water
 	elif Input.is_action_just_pressed("sell"):
 		selected_mode = SelectionMode.Sell
+	elif Input.is_action_just_pressed("turret"):
+		selected_mode = SelectionMode.Turret
 	
 	# Set the position to be aligned to the tilemap grid
 	var mouse_map_coord = tilemap.world_to_map(get_global_mouse_position())
@@ -82,6 +85,19 @@ func _process(delta):
 					plant.recieve_watered()
 			
 			num_actions += 1
+		elif selected_mode == SelectionMode.Turret and map_cell == 1:
+			var should_spawn_turret = true
+			for existing_turret in get_tree().get_nodes_in_group("turret"):
+				if existing_turret.position == tilemap.map_to_world(mouse_map_coord):
+					should_spawn_turret = false
+			
+			var turret = load("res://Turret.tscn")
+			var turret_inst = turret.instance()
+			
+			if money.can_lose_money(turret_inst.cost) and should_spawn_turret:
+				money.lose_money(turret_inst.cost)
+				turret_inst.position = tilemap.map_to_world(mouse_map_coord)
+				get_tree().get_current_scene().add_child(turret_inst)
 	
 	if num_actions >= num_actions_per_advance:
 		num_actions = 0

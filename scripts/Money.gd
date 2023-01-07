@@ -25,3 +25,4 @@ func can_lose_money(amount):
 
 func _ready():
 	money = start_money
+	text = "£" + money as String

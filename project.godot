@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "HBoxContainer",
 "class": "DateTime",
 "language": "GDScript",
-"path": "res://DateTime.gd"
+"path": "res://scripts/DateTime.gd"
 }, {
 "base": "Label",
 "class": "Money",
 "language": "GDScript",
-"path": "res://Money.gd"
+"path": "res://scripts/Money.gd"
 }, {
 "base": "Camera2D",
 "class": "move_camera",
@@ -79,6 +79,16 @@ plant={
 sell={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+advance_day={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+turret={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -9,6 +9,20 @@ onready var tilemap = get_tree().get_current_scene().get_node("TileMap")
 var day_ind = 1
 var time_ind = 0
 
+var num_enemies_to_spawn = 1
+
+func spawn_enemies(num: int):
+	var spawn_points = get_tree().get_nodes_in_group("spawn_point")
+	var enemy = load("res://Enemy.tscn")
+	
+	if num > spawn_points.size():
+		num = spawn_points.size()
+	
+	for n in num:
+		var enemy_inst = enemy.instance()
+		enemy_inst.position = spawn_points[n].position
+		get_tree().get_current_scene().add_child(enemy_inst)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	day_ind = 1
@@ -25,6 +39,7 @@ func set_time():
 		time.text = "Evening"
 	elif time_ind == 3:
 		time.text = "Night"
+		spawn_enemies(num_enemies_to_spawn)
 
 func set_day():
 	day_num.text = "Day " + day_ind as String
@@ -37,6 +52,9 @@ func advance_day():
 		day_ind += 1
 		set_day()
 		
+		if day_ind % 2 == 0:
+			num_enemies_to_spawn += 1
+		
 		for plant in get_tree().get_nodes_in_group("plant"):
 			plant.recieve_new_day()
 			
@@ -45,3 +63,7 @@ func advance_day():
 			if cell == 2: # Watered
 				tilemap.set_cell(tilemap_cell_pos.x, tilemap_cell_pos.y, 0)	
 	set_time()
+
+func _process(delta):
+	if Input.is_action_just_pressed("advance_day"):
+		advance_day()
