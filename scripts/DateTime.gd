@@ -5,6 +5,7 @@ onready var time: Label = get_node("Time")
 onready var day_num: Label = get_node("DayNum")
 
 onready var tilemap = get_tree().get_current_scene().get_node("TileMap")
+onready var selection_mode = get_tree().get_current_scene().get_node("SelectedTile")
 
 var day_ind = 1
 var time_ind = 0
@@ -55,6 +56,7 @@ func advance_day():
 		return
 	
 	time_ind += 1
+	selection_mode.num_actions = 0
 	
 	if time_ind > 3:
 		time_ind = 0

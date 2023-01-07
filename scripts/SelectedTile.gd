@@ -36,14 +36,11 @@ func switch_selection_mode():
 		selected_mode = SelectionMode.Turret
 
 func use_selection_mode():
-	# Set the position to be aligned to the tilemap grid
-	var mouse_map_coord = tilemap.world_to_map(get_global_mouse_position())
-	var map_cell = tilemap.get_cell(mouse_map_coord.x, mouse_map_coord.y)
-	if map_cell != tilemap.INVALID_CELL:
-		position = tilemap.map_to_world(mouse_map_coord)
-	
 	# Turn a tile to dirt
 	if Input.is_action_pressed("select"):
+		var mouse_map_coord = tilemap.world_to_map(get_global_mouse_position())
+		var map_cell = tilemap.get_cell(mouse_map_coord.x, mouse_map_coord.y)
+		
 		if selected_mode == SelectionMode.Till and map_cell == 1:
 			tilemap.set_cell(mouse_map_coord.x, mouse_map_coord.y, 0)
 			num_actions += 1
@@ -95,10 +92,16 @@ func use_selection_mode():
 				get_tree().get_current_scene().add_child(turret_inst)
 	
 	if num_actions >= num_actions_per_advance:
-		num_actions = 0
 		datetime.advance_day()
 
 func _process(delta):
-	if not using_ui and num_actions <= num_actions_per_advance:
+	if not using_ui:
+		# Set the position to be aligned to the tilemap grid
+		var mouse_map_coord = tilemap.world_to_map(get_global_mouse_position())
+		var map_cell = tilemap.get_cell(mouse_map_coord.x, mouse_map_coord.y)
+		if map_cell != tilemap.INVALID_CELL:
+			position = tilemap.map_to_world(mouse_map_coord)
+	
+	if not using_ui and num_actions < num_actions_per_advance:
 		switch_selection_mode()
 		use_selection_mode()
