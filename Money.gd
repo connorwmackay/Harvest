@@ -1,7 +1,7 @@
 extends Label
 class_name Money
 
-export(int) var start_money = 10
+export(int) var start_money = 50
 var money = start_money
 
 func gain_money(amount):

@@ -8,6 +8,7 @@ export(int) var days_until_mid = 1
 export(int) var days_until_end = 2
 export(int) var max_days_no_water = 0
 export(int) var value = 10
+export(int) var cost = 5
 
 var was_watered = false
 var num_days_not_watered = 0

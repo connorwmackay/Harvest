@@ -9,6 +9,7 @@ enum SelectionMode {
 
 onready var tilemap = get_tree().get_current_scene().get_node("TileMap")
 onready var datetime: DateTime = get_tree().get_current_scene().find_node("DateTime")
+onready var money = get_tree().get_current_scene().find_node("Money")
 
 var selected_mode = SelectionMode.Till
 
@@ -63,9 +64,12 @@ func _process(delta):
 			if can_plant:
 				var plant = load("res://CarrotPlant.tscn")
 				var plant_inst = plant.instance()
-				plant_inst.position = tilemap.map_to_world(mouse_map_coord)
-				get_tree().get_current_scene().add_child(plant_inst)
-				num_actions += 1
+				
+				if money.can_lose_money(plant_inst.cost):
+					money.lose_money(plant_inst.cost)
+					plant_inst.position = tilemap.map_to_world(mouse_map_coord)
+					get_tree().get_current_scene().add_child(plant_inst)
+					num_actions += 1
 		elif selected_mode == SelectionMode.Sell:
 			for plant in get_tree().get_nodes_in_group("plant"):
 				if plant.position == position and plant.can_sell_plant():
