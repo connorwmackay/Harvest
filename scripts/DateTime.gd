@@ -45,6 +45,13 @@ func set_day():
 	day_num.text = "Day " + day_ind as String
 
 func advance_day():
+	var are_there_enemies = false
+	if get_tree().get_nodes_in_group("enemy").size() > 0:
+		are_there_enemies = true
+	
+	if time.text == "Night" and are_there_enemies:
+		return
+	
 	time_ind += 1
 	
 	if time_ind > 3:

@@ -4,6 +4,7 @@
 [ext_resource path="res://scripts/SelectedTile.gd" type="Script" id=2]
 
 [node name="SelectedTile" type="Sprite"]
+z_index = 1
 texture = ExtResource( 1 )
 centered = false
 script = ExtResource( 2 )

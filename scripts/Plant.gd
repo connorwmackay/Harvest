@@ -7,7 +7,7 @@ var days_existed = 0
 export(int) var days_until_mid = 1
 export(int) var days_until_end = 2
 export(int) var max_days_no_water = 0
-export(int) var value = 10
+export(int) var value = 15
 export(int) var cost = 5
 
 var was_watered = false
@@ -28,7 +28,13 @@ func recieve_new_day():
 		animated_sprite.set_animation("Mid")
 	
 	if days_existed >= days_until_end:
+		if animated_sprite.get_animation() != "Final":
+			var sellable = load("res://Sellable.tscn")
+			var sellable_inst = sellable.instance()
+			add_child(sellable_inst)
+		
 		animated_sprite.set_animation("Final")
+		
 
 func recieve_watered():
 	was_watered = true
