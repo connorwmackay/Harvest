@@ -67,8 +67,10 @@ func _process(delta):
 				get_tree().get_current_scene().add_child(plant_inst)
 				num_actions += 1
 		elif selected_mode == SelectionMode.Sell:
-			print("Sell harvest on selected tile")
-			num_actions += 1
+			for plant in get_tree().get_nodes_in_group("plant"):
+				if plant.position == position and plant.can_sell_plant():
+					plant.sell_plant()
+					num_actions += 1
 		elif selected_mode == SelectionMode.Water and map_cell == 0:
 			tilemap.set_cell(mouse_map_coord.x, mouse_map_coord.y, 2)
 			for plant in get_tree().get_nodes_in_group("plant"):

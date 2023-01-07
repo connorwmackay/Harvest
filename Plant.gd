@@ -1,11 +1,13 @@
 extends Node2D
 
 onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
+onready var money = get_tree().get_current_scene().find_node("Money")
 
 var days_existed = 0
 export(int) var days_until_mid = 1
 export(int) var days_until_end = 2
 export(int) var max_days_no_water = 0
+export(int) var value = 10
 
 var was_watered = false
 var num_days_not_watered = 0
@@ -30,6 +32,16 @@ func recieve_new_day():
 func recieve_watered():
 	was_watered = true
 	num_days_not_watered = 0
+
+func can_sell_plant():
+	if days_existed >= days_until_end:
+		return true
+	
+	return false
+
+func sell_plant():
+	money.gain_money(value)
+	queue_free()
 
 func _ready():
 	num_days_not_watered = 0
