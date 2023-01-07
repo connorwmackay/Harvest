@@ -51,9 +51,21 @@ func _process(delta):
 		if selected_mode == SelectionMode.Till and map_cell == 1:
 			tilemap.set_cell(mouse_map_coord.x, mouse_map_coord.y, 0)
 			num_actions += 1
-		elif selected_mode == SelectionMode.Plant:
-			print("Plant on selected tile")
-			num_actions += 1
+		elif selected_mode == SelectionMode.Plant and (map_cell == 0 or map_cell == 2):
+			var can_plant = true
+			
+			# Check for an existing plant
+			for plant_exst in get_tree().get_nodes_in_group("plant"):
+				if plant_exst.position == tilemap.map_to_world(mouse_map_coord):
+					can_plant = false
+			
+			# Only plant the plant if there wasn't a plant on the tile
+			if can_plant:
+				var plant = load("res://CarrotPlant.tscn")
+				var plant_inst = plant.instance()
+				plant_inst.position = tilemap.map_to_world(mouse_map_coord)
+				get_tree().get_current_scene().add_child(plant_inst)
+				num_actions += 1
 		elif selected_mode == SelectionMode.Sell:
 			print("Sell harvest on selected tile")
 			num_actions += 1

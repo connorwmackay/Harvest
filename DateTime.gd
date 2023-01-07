@@ -34,5 +34,8 @@ func advance_day():
 		time_ind = 0
 		day_ind += 1
 		set_day()
+		
+		for plant in get_tree().get_nodes_in_group("plant"):
+			plant.recieve_new_day()
 	
 	set_time()
