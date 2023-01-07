@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 
 onready var tillButton = find_node("TillButton")
 onready var waterButton = find_node("WaterButton")
@@ -6,9 +6,11 @@ onready var farmButton = find_node("FarmButton")
 onready var sellButton = find_node("SellButton")
 onready var turretButton = find_node("TurretButton")
 onready var advanceButton = find_node("AdvanceButton")
+onready var researchButton = find_node("ResearchButton")
 
 onready var selection_mode = get_tree().get_current_scene().get_node("SelectedTile")
 onready var datetime = get_tree().get_current_scene().find_node("DateTime")
+onready var research_panel = get_tree().get_current_scene().find_node("ResearchPanel")
 
 func _ready():
 	tillButton.connect("pressed", self, "_till_button_pressed")
@@ -17,6 +19,7 @@ func _ready():
 	sellButton.connect("pressed", self, "_sell_button_pressed")
 	turretButton.connect("pressed", self, "_turret_button_pressed")
 	advanceButton.connect("pressed", self, "_advance_button_pressed")
+	researchButton.connect("pressed", self, "_research_button_pressed")
 
 func _till_button_pressed():
 	tillButton.pressed = true
@@ -65,6 +68,9 @@ func _turret_button_pressed():
 
 func _advance_button_pressed():
 	datetime.advance_day()
+
+func _research_button_pressed():
+	research_panel.visible = !research_panel.visible
 
 func _on_SelectionModeUI_mouse_entered():
 	selection_mode.using_ui = true

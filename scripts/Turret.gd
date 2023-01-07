@@ -1,8 +1,8 @@
 extends Sprite
 
-export(int) var cost = 20
-export(float) var attack_range = 192
+onready var research_panel = get_tree().get_current_scene().find_node("ResearchPanel")
 
+var cost = 20
 var last_enemy_pos = null
 
 func look_towards_nearest_enemy():
@@ -30,7 +30,7 @@ func attack():
 	bullet_inst.rotation = rotation
 	
 	if last_enemy_pos != null:
-		if get_tree().get_nodes_in_group("enemy").size() > 0 and position.distance_to(last_enemy_pos) <= attack_range:
+		if get_tree().get_nodes_in_group("enemy").size() > 0 and position.distance_to(last_enemy_pos) <= research_panel.turret_range:
 			get_tree().get_current_scene().add_child(bullet_inst)
 	
 	yield(get_tree().create_timer(1), "timeout")

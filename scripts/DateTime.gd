@@ -10,16 +10,18 @@ var day_ind = 1
 var time_ind = 0
 
 var num_enemies_to_spawn = 1
+var start_enemy_health = 5
 
 func spawn_enemies(num: int):
 	var spawn_points = get_tree().get_nodes_in_group("spawn_point")
 	var enemy = load("res://Enemy.tscn")
-	
+
 	if num > spawn_points.size():
 		num = spawn_points.size()
 	
 	for n in num:
 		var enemy_inst = enemy.instance()
+		enemy_inst.health = start_enemy_health
 		enemy_inst.position = spawn_points[n].position
 		get_tree().get_current_scene().add_child(enemy_inst)
 
@@ -61,6 +63,9 @@ func advance_day():
 		
 		if day_ind % 2 == 0:
 			num_enemies_to_spawn += 1
+		
+		if day_ind % 4 == 0:
+			start_enemy_health += 1
 		
 		for plant in get_tree().get_nodes_in_group("plant"):
 			plant.recieve_new_day()

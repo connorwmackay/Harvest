@@ -1,8 +1,10 @@
 extends RigidBody2D
 
-export(int) var hp = 5
+var health: int = 5
 export(float) var move_speed = 32
 var target_pos = null
+
+onready var research_panel = get_tree().get_current_scene().find_node("ResearchPanel")
 
 func find_nearest_plant_pos(pos_exclusions = []):
 	var plant_pos = null
@@ -53,9 +55,9 @@ func new_target_pos(pos_exclusions = []):
 		target_pos = find_random_pos_on_tilemap()
 
 func recieve_damage(damage):
-	hp -= damage
+	health -= damage
 	
-	if hp <= 0:
+	if health <= 0:
 		queue_free()
 		return true
 	else:
@@ -75,5 +77,5 @@ func _process(delta):
 	for body in get_colliding_bodies():
 		if body.is_in_group("bullet"):
 			body.queue_free()
-			recieve_damage(body.damage)
+			recieve_damage(research_panel.turret_damage)
 		

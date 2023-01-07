@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://FarmTilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MoveCamera.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Money.tscn" type="PackedScene" id=5]
 [ext_resource path="res://SpawnPoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SelectionModeUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ResearchPanel.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node2D"]
 
@@ -34,6 +35,12 @@ margin_bottom = 67.0
 [node name="SelectionModeUI" parent="MoveCamera/CanvasLayer" instance=ExtResource( 7 )]
 margin_top = 72.0
 margin_bottom = 216.0
+
+[node name="ResearchPanel" parent="MoveCamera/CanvasLayer" instance=ExtResource( 8 )]
+margin_left = 208.0
+margin_top = 120.0
+margin_right = 493.0
+margin_bottom = 240.0
 
 [node name="SelectedTile" parent="." instance=ExtResource( 3 )]
 
