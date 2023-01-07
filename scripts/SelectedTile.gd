@@ -17,18 +17,6 @@ var selected_mode = SelectionMode.Till
 var num_actions_per_advance = 10
 var num_actions = 0
 
-# Used to find the closest tile position
-func find_closest_val(val, multiple):
-	var quotient = val / multiple
-	
-	var option1 = multiple * quotient
-	var option2 = multiple * (quotient + 1)
-	
-	if (abs(val - option1) < abs(val - option2)):
-		return option1
-		
-	return option2
-
 func _ready():
 	selected_mode = SelectionMode.Till
 

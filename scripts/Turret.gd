@@ -16,8 +16,23 @@ func look_towards_nearest_enemy():
 		look_at(enemy_pos)
 	else:
 		set_global_rotation(0)
+
+func attack():
+	var bullet = load("res://TurretBullet.tscn")
+	var bullet_inst = bullet.instance()
+	bullet_inst.position = position
+	bullet_inst.rotation = rotation
+	
+	if get_tree().get_nodes_in_group("enemy").size() > 0:
+		get_tree().get_current_scene().add_child(bullet_inst)
+	
+	yield(get_tree().create_timer(1), "timeout")
+	attack()
+	
 func _ready():
 	look_towards_nearest_enemy()
+	attack()
 	
 func _process(delta):
 	look_towards_nearest_enemy()
+		

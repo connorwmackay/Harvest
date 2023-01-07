@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 export(float) var move_speed = 32
 var target_pos = null
@@ -56,6 +56,13 @@ func _ready():
 	new_target_pos()
 
 func _process(delta):
+	gravity_scale = 0
 	if target_pos != null:
 		position = position.move_toward(target_pos, move_speed * delta)
 		attack_plant_if_possible()
+		
+	for body in get_colliding_bodies():
+		if body.is_in_group("bullet"):
+			body.queue_free()
+			queue_free()
+		
