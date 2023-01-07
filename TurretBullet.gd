@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 export(float) var move_speed = 10000
+export(int) var damage = 1
 
 onready var sprite = get_node("Sprite")
 

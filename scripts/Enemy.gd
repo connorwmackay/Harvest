@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+export(int) var hp = 3
 export(float) var move_speed = 32
 var target_pos = null
 
@@ -51,8 +52,18 @@ func new_target_pos(pos_exclusions = []):
 	if target_pos == null:
 		target_pos = find_random_pos_on_tilemap()
 
+func recieve_damage(damage):
+	hp -= damage
+	
+	if hp <= 0:
+		queue_free()
+		return true
+	else:
+		return false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hp = 3
 	new_target_pos()
 
 func _process(delta):
@@ -64,5 +75,5 @@ func _process(delta):
 	for body in get_colliding_bodies():
 		if body.is_in_group("bullet"):
 			body.queue_free()
-			queue_free()
+			recieve_damage(body.damage)
 		
