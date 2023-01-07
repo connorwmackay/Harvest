@@ -60,6 +60,9 @@ func use_selection_mode():
 				var plant = load("res://CarrotPlant.tscn")
 				var plant_inst = plant.instance()
 				
+				if map_cell == 2:
+					plant_inst.recieve_watered()
+				
 				if money.can_lose_money(plant_inst.cost):
 					money.lose_money(plant_inst.cost)
 					plant_inst.position = tilemap.map_to_world(mouse_map_coord)
@@ -96,6 +99,6 @@ func use_selection_mode():
 		datetime.advance_day()
 
 func _process(delta):
-	if not using_ui:
+	if not using_ui and num_actions <= num_actions_per_advance:
 		switch_selection_mode()
 		use_selection_mode()

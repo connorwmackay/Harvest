@@ -52,6 +52,5 @@ func sell_plant():
 
 func _ready():
 	num_days_not_watered = 0
-	was_watered = false
 	animated_sprite.set_animation("Early")
 	days_existed = 0
