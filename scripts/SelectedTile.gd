@@ -71,6 +71,10 @@ func _process(delta):
 			num_actions += 1
 		elif selected_mode == SelectionMode.Water and map_cell == 0:
 			tilemap.set_cell(mouse_map_coord.x, mouse_map_coord.y, 2)
+			for plant in get_tree().get_nodes_in_group("plant"):
+				if plant.position == position:
+					plant.recieve_watered()
+			
 			num_actions += 1
 	
 	if num_actions >= num_actions_per_advance:

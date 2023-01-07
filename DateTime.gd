@@ -4,6 +4,8 @@ class_name DateTime
 onready var time: Label = get_node("Time")
 onready var day_num: Label = get_node("DayNum")
 
+onready var tilemap = get_tree().get_current_scene().get_node("TileMap")
+
 var day_ind = 1
 var time_ind = 0
 
@@ -37,5 +39,9 @@ func advance_day():
 		
 		for plant in get_tree().get_nodes_in_group("plant"):
 			plant.recieve_new_day()
-	
+			
+		for tilemap_cell_pos in tilemap.get_used_cells():
+			var cell = tilemap.get_cell(tilemap_cell_pos.x, tilemap_cell_pos.y)
+			if cell == 2: # Watered
+				tilemap.set_cell(tilemap_cell_pos.x, tilemap_cell_pos.y, 0)	
 	set_time()
