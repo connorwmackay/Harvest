@@ -17,10 +17,13 @@ var selected_mode = SelectionMode.Till
 var num_actions_per_advance = 10
 var num_actions = 0
 
+var using_ui = false
+
 func _ready():
 	selected_mode = SelectionMode.Till
+	using_ui = false
 
-func _process(delta):
+func switch_selection_mode():
 	if Input.is_action_just_pressed("plant"):
 		selected_mode = SelectionMode.Plant
 	elif Input.is_action_just_pressed("till"):
@@ -31,7 +34,8 @@ func _process(delta):
 		selected_mode = SelectionMode.Sell
 	elif Input.is_action_just_pressed("turret"):
 		selected_mode = SelectionMode.Turret
-	
+
+func use_selection_mode():
 	# Set the position to be aligned to the tilemap grid
 	var mouse_map_coord = tilemap.world_to_map(get_global_mouse_position())
 	var map_cell = tilemap.get_cell(mouse_map_coord.x, mouse_map_coord.y)
@@ -90,3 +94,8 @@ func _process(delta):
 	if num_actions >= num_actions_per_advance:
 		num_actions = 0
 		datetime.advance_day()
+
+func _process(delta):
+	if not using_ui:
+		switch_selection_mode()
+		use_selection_mode()
