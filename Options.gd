@@ -9,6 +9,5 @@ func _ready():
 func _back_button_pressed():
 	get_tree().change_scene("res://MainMenu.tscn")
 
-
 func _on_VolumeHSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), log(value) * 20)

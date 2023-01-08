@@ -36,9 +36,6 @@ func find_nearest_turret_pos():
 	
 	return turret_pos
 
-func find_random_pos_on_tilemap():
-	return null
-
 func attack_group_if_possible(group_name: String):
 	for group in get_tree().get_nodes_in_group(group_name):
 		if group.position == position:
@@ -51,9 +48,6 @@ func new_target_pos(pos_exclusions = []):
 	
 	if target_pos == null:
 		target_pos = find_nearest_turret_pos()
-	
-	if target_pos == null:
-		target_pos = find_random_pos_on_tilemap()
 
 func recieve_damage(damage):
 	health -= damage
@@ -71,6 +65,9 @@ func _ready():
 
 func _process(delta):
 	gravity_scale = 0
+	
+	new_target_pos()
+	
 	if target_pos != null:
 		position = position.move_toward(target_pos, move_speed * delta)
 		attack_group_if_possible("plant")

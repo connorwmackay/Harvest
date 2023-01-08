@@ -26,3 +26,9 @@ func can_lose_money(amount):
 func _ready():
 	money = start_money
 	text = "£" + money as String
+	
+func _process(delta):
+	var num_plants = get_tree().get_nodes_in_group("plant").size()
+	
+	if money <= 0 and num_plants <= 0:
+		get_tree().change_scene("res://Lose.tscn")
