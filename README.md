@@ -5,7 +5,8 @@ Protect your Farm is a farming simulator mixed with tower defence mechanics. Eve
 
 The game was built with Godot, the pixel art was made using Aseprite, sound effects with Sfxr and the music was made using Beepbox.
 
-https://connorwmackay.itch.io/protect-your-farm
+[Itch.io](https://connorwmackay.itch.io/protect-your-farm) <br>
+[Ludum Dare 52 Entry](https://ldjam.com/events/ludum-dare/52/protect-your-farm) <br>
 
 ## Controls
 - Move the Camera: Arrow Keys
