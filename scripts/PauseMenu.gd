@@ -5,9 +5,11 @@ onready var selection_mode = get_tree().get_current_scene().get_node("SelectedTi
 func _process(delta):
 	if Input.is_action_just_pressed("toggle_pause"):
 		visible = !visible
+		selection_mode.using_ui = false
 
 func _on_ReturnButton_pressed():
 	visible = !visible
+	selection_mode.using_ui = false
 
 func _on_MainMenuButton_pressed():
 	get_tree().change_scene("res://MainMenu.tscn")

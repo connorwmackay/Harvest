@@ -7,12 +7,12 @@ func get_offset():
 	return offset
 
 func _process(delta):
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		offset_v -= move_speed * delta
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("move_down"):
 		offset_v += move_speed * delta
 	
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		offset_h += move_speed * delta
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("move_left"):
 		offset_h -= move_speed * delta
