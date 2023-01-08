@@ -1,8 +1,8 @@
 extends Sprite
 
 onready var research_panel = get_tree().get_current_scene().find_node("ResearchPanel")
+onready var audio_stream_player = find_node("AudioStreamPlayer")
 
-var cost = 20
 var last_enemy_pos = null
 
 func look_towards_nearest_enemy():
@@ -32,6 +32,7 @@ func attack():
 	if last_enemy_pos != null:
 		if get_tree().get_nodes_in_group("enemy").size() > 0 and position.distance_to(last_enemy_pos) <= research_panel.turret_range:
 			get_tree().get_current_scene().add_child(bullet_inst)
+			audio_stream_player.play()
 	
 	yield(get_tree().create_timer(1), "timeout")
 	attack()

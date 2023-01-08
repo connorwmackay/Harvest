@@ -12,6 +12,9 @@ onready var selection_mode = get_tree().get_current_scene().get_node("SelectedTi
 onready var datetime = get_tree().get_current_scene().find_node("DateTime")
 onready var research_panel = get_tree().get_current_scene().find_node("ResearchPanel")
 
+func set_turret_price_text(cost):
+	turretButton.text = "Turret (£" + cost as String + ")"
+
 func _ready():
 	tillButton.connect("pressed", self, "_till_button_pressed")
 	waterButton.connect("pressed", self, "_water_button_pressed")
@@ -85,3 +88,5 @@ func _process(delta):
 		advanceButton.disabled = true
 	else:
 		advanceButton.disabled = false
+	
+	set_turret_price_text(research_panel.turret_cost)

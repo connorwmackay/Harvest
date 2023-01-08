@@ -5,6 +5,7 @@ export(float) var move_speed = 32
 var target_pos = null
 
 onready var research_panel = get_tree().get_current_scene().find_node("ResearchPanel")
+onready var audio_stream_player = find_node("AudioStreamPlayer")
 
 func find_nearest_plant_pos(pos_exclusions = []):
 	var plant_pos = null
@@ -56,6 +57,7 @@ func new_target_pos(pos_exclusions = []):
 
 func recieve_damage(damage):
 	health -= damage
+	audio_stream_player.play()
 	
 	if health <= 0:
 		queue_free()

@@ -51,7 +51,7 @@ margin_right = 114.0
 margin_bottom = 83.0
 mouse_filter = 1
 toggle_mode = true
-text = "Plant"
+text = "Plant (£5)"
 
 [node name="SellButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
 margin_top = 87.0
@@ -67,7 +67,7 @@ margin_right = 114.0
 margin_bottom = 141.0
 mouse_filter = 1
 toggle_mode = true
-text = "Turret"
+text = "Turret (£20)"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer3"]
 margin_top = 153.0

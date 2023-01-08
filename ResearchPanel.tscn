@@ -32,7 +32,7 @@ margin_bottom = 48.0
 mouse_filter = 1
 dragger_visibility = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/NumActionsContainer"]
+[node name="NumActionsLabel" type="Label" parent="VBoxContainer/NumActionsContainer"]
 margin_top = 3.0
 margin_right = 182.0
 margin_bottom = 22.0
@@ -53,7 +53,7 @@ margin_bottom = 77.0
 mouse_filter = 1
 dragger_visibility = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/TurretDamageContainer"]
+[node name="TurretDamageLabel" type="Label" parent="VBoxContainer/TurretDamageContainer"]
 margin_top = 3.0
 margin_right = 183.0
 margin_bottom = 22.0
@@ -74,7 +74,7 @@ margin_bottom = 106.0
 mouse_filter = 1
 dragger_visibility = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/TurretRangeContainer"]
+[node name="TurretRangeLabel" type="Label" parent="VBoxContainer/TurretRangeContainer"]
 margin_top = 3.0
 margin_right = 169.0
 margin_bottom = 22.0

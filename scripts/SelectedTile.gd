@@ -11,6 +11,12 @@ enum SelectionMode {
 onready var tilemap = get_tree().get_current_scene().get_node("TileMap")
 onready var datetime: DateTime = get_tree().get_current_scene().find_node("DateTime")
 onready var money = get_tree().get_current_scene().find_node("Money")
+onready var research_panel = get_tree().get_current_scene().find_node("ResearchPanel")
+
+onready var water_audio_player = find_node("WaterAudioPlayer")
+onready var sell_audio_player = find_node("SellAudioPlayer")
+onready var till_audio_player = find_node("TillAudioPlayer")
+onready var plant_audio_player = find_node("PlantAudioPlayer")
 
 var selected_mode = SelectionMode.Till
 
@@ -42,6 +48,7 @@ func use_selection_mode():
 		var map_cell = tilemap.get_cell(mouse_map_coord.x, mouse_map_coord.y)
 		
 		if selected_mode == SelectionMode.Till and map_cell == 1:
+			till_audio_player.play()
 			tilemap.set_cell(mouse_map_coord.x, mouse_map_coord.y, 0)
 			num_actions += 1
 		elif selected_mode == SelectionMode.Plant and (map_cell == 0 or map_cell == 2):
@@ -56,6 +63,7 @@ func use_selection_mode():
 			if can_plant:
 				var plant = load("res://CarrotPlant.tscn")
 				var plant_inst = plant.instance()
+				plant_audio_player.play()
 				
 				if map_cell == 2:
 					plant_inst.recieve_watered()
@@ -69,6 +77,7 @@ func use_selection_mode():
 			for plant in get_tree().get_nodes_in_group("plant"):
 				if plant.position == position and plant.can_sell_plant():
 					plant.sell_plant()
+					sell_audio_player.play()
 					#num_actions += 1
 		elif selected_mode == SelectionMode.Water and map_cell == 0:
 			tilemap.set_cell(mouse_map_coord.x, mouse_map_coord.y, 2)
@@ -77,6 +86,7 @@ func use_selection_mode():
 					plant.recieve_watered()
 			
 			num_actions += 1
+			water_audio_player.play()
 		elif selected_mode == SelectionMode.Turret and map_cell == 1:
 			var should_spawn_turret = true
 			for existing_turret in get_tree().get_nodes_in_group("turret"):
@@ -86,8 +96,9 @@ func use_selection_mode():
 			var turret = load("res://Turret.tscn")
 			var turret_inst = turret.instance()
 			
-			if money.can_lose_money(turret_inst.cost) and should_spawn_turret:
-				money.lose_money(turret_inst.cost)
+			if money.can_lose_money(research_panel.turret_cost) and should_spawn_turret:
+				money.lose_money(research_panel.turret_cost)
+				research_panel.turret_cost *= research_panel.turret_cost_increase
 				turret_inst.position = tilemap.map_to_world(mouse_map_coord)
 				get_tree().get_current_scene().add_child(turret_inst)
 	
