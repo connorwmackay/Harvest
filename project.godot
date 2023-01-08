@@ -32,9 +32,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Monster Harvest"
-config/description="You grow exotic monstrous plants."
-run/main_scene="res://Game.tscn"
+config/name="Protect Your Farm"
+config/description="Farm and defend your crops. Spiders attack your farm every night, how many days can you protect your farm for?"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]

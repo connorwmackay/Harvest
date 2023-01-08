@@ -63,12 +63,12 @@ func use_selection_mode():
 			if can_plant:
 				var plant = load("res://CarrotPlant.tscn")
 				var plant_inst = plant.instance()
-				plant_audio_player.play()
 				
 				if map_cell == 2:
 					plant_inst.recieve_watered()
 				
 				if money.can_lose_money(plant_inst.cost):
+					plant_audio_player.play()
 					money.lose_money(plant_inst.cost)
 					plant_inst.position = tilemap.map_to_world(mouse_map_coord)
 					get_tree().get_current_scene().add_child(plant_inst)
