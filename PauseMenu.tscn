@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main_menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=2]
+
+[node name="PauseMenu" type="PanelContainer"]
+visible = false
+margin_right = 14.0
+margin_bottom = 14.0
+mouse_filter = 1
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 144.0
+margin_bottom = 144.0
+theme = ExtResource( 1 )
+custom_constants/separation = 16
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+margin_right = 137.0
+margin_bottom = 35.0
+mouse_filter = 1
+text = "Return"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+margin_top = 51.0
+margin_right = 137.0
+margin_bottom = 86.0
+mouse_filter = 1
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 102.0
+margin_right = 137.0
+margin_bottom = 137.0
+mouse_filter = 1
+text = "Quit"
+
+[connection signal="mouse_entered" from="." to="." method="_on_PauseMenu_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_PauseMenu_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
