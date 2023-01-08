@@ -4,7 +4,7 @@
 [ext_resource path="res://FarmTilemap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://CarrotPlant.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main_menu_theme.tres" type="Theme" id=4]
-[ext_resource path="res://MainMenu.gd" type="Script" id=5]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=5]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 5 )
@@ -56,10 +56,18 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="ControlsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 margin_top = 78.0
-margin_right = 62.0
+margin_right = 113.0
 margin_bottom = 113.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Controls"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 117.0
+margin_right = 62.0
+margin_bottom = 152.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Quit"

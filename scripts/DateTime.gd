@@ -19,6 +19,7 @@ func spawn_enemies(num: int):
 
 	if num > spawn_points.size():
 		num = spawn_points.size()
+		start_enemy_health += 1
 	
 	for n in num:
 		var enemy_inst = enemy.instance()

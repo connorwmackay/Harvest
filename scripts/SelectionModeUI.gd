@@ -24,49 +24,59 @@ func _ready():
 	advanceButton.connect("pressed", self, "_advance_button_pressed")
 	researchButton.connect("pressed", self, "_research_button_pressed")
 
-func _till_button_pressed():
+func focus_till():
 	tillButton.pressed = true
 	waterButton.pressed = false
 	farmButton.pressed = false
 	sellButton.pressed = false
 	turretButton.pressed = false
-	
-	selection_mode.selected_mode = selection_mode.SelectionMode.Till
 
-func _water_button_pressed():
+func focus_water():
 	tillButton.pressed = false
 	waterButton.pressed = true
 	farmButton.pressed = false
 	sellButton.pressed = false
 	turretButton.pressed = false
-	
-	selection_mode.selected_mode = selection_mode.SelectionMode.Water
 
-func _farm_button_pressed():
+func focus_farm():
 	tillButton.pressed = false
 	waterButton.pressed = false
 	farmButton.pressed = true
 	sellButton.pressed = false
 	turretButton.pressed = false
-	
-	selection_mode.selected_mode = selection_mode.SelectionMode.Plant
 
-func _sell_button_pressed():
+func focus_sell():
 	tillButton.pressed = false
 	waterButton.pressed = false
 	farmButton.pressed = false
 	sellButton.pressed = true
 	turretButton.pressed = false
-	
-	selection_mode.selected_mode = selection_mode.SelectionMode.Sell
 
-func _turret_button_pressed():
+func focus_turret():
 	tillButton.pressed = false
 	waterButton.pressed = false
 	farmButton.pressed = false
 	sellButton.pressed = false
 	turretButton.pressed = true
-	
+
+func _till_button_pressed():
+	focus_till()
+	selection_mode.selected_mode = selection_mode.SelectionMode.Till
+
+func _water_button_pressed():
+	focus_water()
+	selection_mode.selected_mode = selection_mode.SelectionMode.Water
+
+func _farm_button_pressed():
+	focus_farm()
+	selection_mode.selected_mode = selection_mode.SelectionMode.Plant
+
+func _sell_button_pressed():
+	focus_sell()
+	selection_mode.selected_mode = selection_mode.SelectionMode.Sell
+
+func _turret_button_pressed():
+	focus_turret()
 	selection_mode.selected_mode = selection_mode.SelectionMode.Turret
 
 func _advance_button_pressed():
@@ -83,6 +93,17 @@ func _on_SelectionModeUI_mouse_exited():
 		selection_mode.using_ui = false
 		
 func _process(delta):
+	if Input.is_action_just_pressed("plant"):
+		focus_farm()
+	elif Input.is_action_just_pressed("till"):
+		focus_till()
+	elif Input.is_action_just_pressed("water"):
+		focus_water()
+	elif Input.is_action_just_pressed("sell"):
+		focus_sell()
+	elif Input.is_action_just_pressed("turret"):
+		focus_turret()
+	
 	var num_enemies = get_tree().get_nodes_in_group("enemy").size()
 	if datetime.time.text == "Night" && num_enemies > 0:
 		advanceButton.disabled = true

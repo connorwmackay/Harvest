@@ -55,11 +55,41 @@ tile_data = PoolIntArray( -327690, 1, 0, -327689, 1, 0, -327688, 1, 0, -327687, 
 
 [node name="SelectedTile" parent="." instance=ExtResource( 3 )]
 
+[node name="SpawnPoint8" parent="." instance=ExtResource( 6 )]
+position = Vector2( -288, 192 )
+
+[node name="SpawnPoint9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 160, 320 )
+
+[node name="SpawnPoint10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 672, 320 )
+
+[node name="SpawnPoint11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 768, 128 )
+
+[node name="SpawnPoint12" parent="." instance=ExtResource( 6 )]
+position = Vector2( 800, 272 )
+
+[node name="SpawnPoint13" parent="." instance=ExtResource( 6 )]
+position = Vector2( 736, -128 )
+
+[node name="SpawnPoint14" parent="." instance=ExtResource( 6 )]
+position = Vector2( 608, -128 )
+
+[node name="SpawnPoint15" parent="." instance=ExtResource( 6 )]
+position = Vector2( 480, -160 )
+
+[node name="SpawnPoint17" parent="." instance=ExtResource( 6 )]
+position = Vector2( -288, 64 )
+
+[node name="SpawnPoint16" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, 320 )
+
 [node name="SpawnPoint2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 320, -96 )
 
 [node name="SpawnPoint" parent="." instance=ExtResource( 6 )]
-position = Vector2( 320, 160 )
+position = Vector2( 296, 328 )
 
 [node name="SpawnPoint3" parent="." instance=ExtResource( 6 )]
 position = Vector2( -256, -144 )
@@ -68,10 +98,10 @@ position = Vector2( -256, -144 )
 position = Vector2( -256, 312 )
 
 [node name="SpawnPoint5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 176, 40 )
+position = Vector2( -168, -136 )
 
 [node name="SpawnPoint6" parent="." instance=ExtResource( 6 )]
 position = Vector2( 544, 320 )
 
 [node name="SpawnPoint7" parent="." instance=ExtResource( 6 )]
-position = Vector2( 688, 184 )
+position = Vector2( -216, -48 )
