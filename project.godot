@@ -37,6 +37,10 @@ config/description="Farm and defend your crops. Spiders attack your farm every n
 run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout="res://bus_layout.tres"
+
 [display]
 
 window/size/width=640

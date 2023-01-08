@@ -11,3 +11,11 @@ func _back_button_pressed():
 
 func _on_VolumeHSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), log(value) * 20)
+
+
+func _on_MusicHSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), log(value) * 20)
+
+
+func _on_SoundEffectsHSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SoundEffects"), log(value) * 20)

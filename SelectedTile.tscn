@@ -15,12 +15,16 @@ script = ExtResource( 2 )
 
 [node name="WaterAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+bus = "SoundEffects"
 
 [node name="SellAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "SoundEffects"
 
 [node name="TillAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+bus = "SoundEffects"
 
 [node name="PlantAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "SoundEffects"
